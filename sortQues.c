@@ -4,12 +4,8 @@
       
 int main()  
 {  
-	int i, j, k, nmemb, nquest, questAleat, conBoo, qOm, qExt;
-	
+	int i, j, k, nmemb, nquest, questAleat, qOm, qExt;
 	time_t t1;
-	conBoo = 1;
-	int questoes[4][5];
-	
 	
 	//Inserindo Componentes da equipe
 	printf("DIGITE A QUANTIDADE DE MEMBROS DA EQUIPE: ");
@@ -22,23 +18,19 @@ int main()
 	}	
 	
 	//Inserindo Componentes da equipe
-	printf("DIGITE A QUANTIDADE DE QUESTÕES DO TRABALHO: ");
+	printf("DIGITE A QUANTIDADE DE QUESTÃ•ES DO TRABALHO: ");
 	scanf("%d", &nquest);
 	int arrayQts[nquest];
 	
-	
-	//Configurando Parâmetros da Função Randômica
+	//Configurando ParÃ¢metros da FunÃ§Ã£o RandÃ´mica
 	srand((unsigned) time(&t1));
 	printf("\n");
-	
-	
-	// Sorteando OS números de forma aleatoria;
+
+	// Sorteando OS nÃºmeros de forma aleatoria;
 	for(i = 0;i < nquest;i++){
 		int isNew = 1;
 		while(isNew) {
 			questAleat = rand()%nquest + 1;
-			
-	
 			for(k = i;k >= 0; k--){
 				if(arrayQts[k] == questAleat){
 					isNew = 1;
@@ -51,19 +43,11 @@ int main()
 		arrayQts[i] = questAleat;
 	}
 	
-	/*printf("VETOR QUESTOES: { ");
-	for(i = 0; i < nquest; i++){
-		printf("%d, ", arrayQts[i]);
-	}
-	printf("}\n");*/
-	
-	// Atribuindo as questões a cada membro da equipe:
+	// Atribuindo as questÃµes a cada membro da equipe:
 	// qOm = questions over member
 	
 	qOm = nquest/nmemb;
 	qExt = nquest%nmemb;
-	
-	
 	int pos = 0;
 	for(k = 0; k < nmemb; k++){
 
@@ -76,15 +60,14 @@ int main()
 		printf("\n");	
 	}
 	
-	// Caso não der para dividir uma quantidade exata de 
-	// de questões para cada aluno.
+	// Caso nÃ£o der para dividir uma quantidade exata de 
+	// de questÃµes para cada aluno.
 	if (qExt > 0){
 		printf("QUESTAO(OES) EXTRA: ");
 		for(i = nquest - qExt; i < nquest;i++ ){
 			printf("%d \t", arrayQts[i]);
 		}
 	}
-	
 	
 	return 0;
 }
